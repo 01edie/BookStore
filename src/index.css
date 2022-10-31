@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.cart-top{
+  position: relative;
+}
+.cart-value{
+  position: absolute;
+  top: 9px;
+  left: 20px;
+  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  backdrop-filter: brightness(1.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: black;
+}
+
+.cart-button{
+  cursor: pointer;
+  border: none;
+  outline: none;
+border-radius: 15px; 
+background-color: gray;
+padding: 17px 10px 3px 10px;
+}
+
+.cart-button:hover{
+  background-color: rgb(187, 185, 185);
+}
