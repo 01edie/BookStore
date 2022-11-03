@@ -12,7 +12,7 @@ const App = () => {
     <Navbar/>
     {cartPage?(<DataViewDemo></DataViewDemo>):(<CartComponent/>)}
     
-    <footer className='flex align-items-center justify-content-center'><h3>“So many books, so little time.” - Frank Zappa</h3></footer>
+    <footer className='flex align-items-center justify-content-center text-center'><h3>“So many books, so little time.” - Frank Zappa</h3></footer>
     </>
     
   )
