@@ -6,7 +6,7 @@ const BookRecords = [
     description: "J Krishnamurti",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/41Rz3E+i8zL._SY344_BO1,204,203,200_.jpg",
-    price: 250,
+    price: 240,
     category: "Life",
     quantity: 2,
     inventoryStatus: "LOWSTOCK",
@@ -19,7 +19,7 @@ const BookRecords = [
     description: "Oprah Winfrey",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/41tiPK9qeEL._SX326_BO1,204,203,200_.jpg",
-    price: 336,
+    price: 599,
     category: "Life",
     quantity: 5,
     inventoryStatus: "INSTOCK",
@@ -32,7 +32,7 @@ const BookRecords = [
     description: "Charles Davis",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/41OoVa857CS._SX331_BO1,204,203,200_.jpg",
-    price: 250,
+    price: 1512,
     category: "Non-fiction",
     quantity: 7,
     inventoryStatus: "INSTOCK",
@@ -45,7 +45,7 @@ const BookRecords = [
     description: "Mark Wolynn",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/41xqPjTlyhL._SX324_BO1,204,203,200_.jpg",
-    price: 250,
+    price: 709,
     category: "Trauma",
     quantity: 9,
     inventoryStatus: "INSTOCK",
@@ -58,7 +58,7 @@ const BookRecords = [
     description: "Jenny Lawson",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/61RdVjHFBPL._SX327_BO1,204,203,200_.jpg",
-    price: 250,
+    price: 512,
     category: "Being",
     quantity: 6,
     inventoryStatus: "INSTOCK",
@@ -71,7 +71,7 @@ const BookRecords = [
     description: "Ali Almossawi",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/51mNXq49cDL._SX383_BO1,204,203,200_.jpg",
-    price: 299,
+    price: 999,
     category: "Life",
     quantity: 4,
     inventoryStatus: "INSTOCK",
@@ -80,11 +80,11 @@ const BookRecords = [
   {
     id: 7,
     code: "5k43kkk29",
-    name: "I hope this finds you",
+    name: "I Hope This Finds You",
     description: "samica mehta",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/41ygJ1g-SnL._SX311_BO1,204,203,200_.jpg",
-    price: 279,
+    price: 265,
     category: "Life",
     quantity: 11,
     inventoryStatus: "INSTOCK",
@@ -97,14 +97,130 @@ const BookRecords = [
     description: "Jazz G. Sethi",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/51lfwL97kUL._SX331_BO1,204,203,200_.jpg",
-    price: 340,
-    category: "Life",
+    price: 269,
+    category: "Mysticism",
     quantity: 0,
     inventoryStatus: "OUTOFSTOCK",
     rating: 5,
   },
+  {
+    id: 9,
+    code: "5k43kkk31",
+    name: "Rumi: Bridge to the Soul",
+    description: "Coleman Barks",
+    image:
+      "https://m.media-amazon.com/images/I/51fcO6KLL9L._SX361_BO1,204,203,200_.jpg",
+    price: 570,
+    category: "Mysticism",
+    quantity: 2,
+    inventoryStatus: "LOWSTOCK",
+    rating: 5,
+  },
+  
+  {
+    id: 10,
+    code: "5k43kkk32",
+    name: "Stillness Speaks",
+    description: "Eckhart Tolle",
+    image:
+      "https://m.media-amazon.com/images/I/41o3O5muEqL.jpg",
+    price: 227,
+    category: "Existence",
+    quantity: 5,
+    inventoryStatus: "INSTOCK",
+    rating: 5,
+  },
+  {
+    id: 11,
+    code: "5k43kkk33",
+    name: "No Mud, No Lotus: The Art Of Transforming Suffering",
+    description: "Thich Nhat Hanh",
+    image:
+      "https://m.media-amazon.com/images/I/31-zkKLCsPL._SX311_BO1,204,203,200_.jpg",
+    price: 205,
+    category: "Life",
+    quantity: 2,
+    inventoryStatus: "LOWSTOCK",
+    rating: 5,
+  },
+  {
+    id: 12,
+    code: "5k43kkk34",
+    name: "The Direct Way",
+    description: "Adyashanti",
+    image:
+      "https://m.media-amazon.com/images/I/41gj65k1TdL.jpg",
+    price: 1004,
+    category: "Real-Magic",
+    quantity: 6,
+    inventoryStatus: "INSTOCK",
+    rating: 5,
+  },
+  {
+    id: 13,
+    code: "5k43kkk35",
+    name: "An Invitation to Freedom",
+    description: "Mooji",
+    image:
+      "https://m.media-amazon.com/images/I/51zJLMkl8lL._SY453_BO1,204,203,200_.jpg",
+    price: 752,
+    category: "ToTheVoid",
+    quantity: 0,
+    inventoryStatus: "OUTOFSTOCK",
+    rating: 5,
+  },
+  {
+    id: 14,
+    code: "5k43kkk36",
+    name: "Life and Death in One Breath",
+    description: "Sadhguru",
+    image:
+      "https://m.media-amazon.com/images/I/41LiqXNLlJL._SX323_BO1,204,203,200_.jpg",
+    price: 230,
+    category: "Shhhh...",
+    quantity: 2,
+    inventoryStatus: "LOWSTOCK",
+    rating: 5,
+  },
+  {
+    id: 15,
+    code: "5k43kkk37",
+    name: "The Red Book",
+    description: "C. G. Jung",
+    image:
+      "https://m.media-amazon.com/images/I/31XSZ9psJsL._SX321_BO1,204,203,200_.jpg",
+    price: 2864,
+    category: "Psychoanalysis",
+    quantity: 6,
+    inventoryStatus: "INSTOCK",
+    rating: 5,
+  },
+  {
+    id: 16,
+    code: "5k43kkk38",
+    name: "Himalayan Lust",
+    description: "Sadhguru",
+    image:
+      "https://m.media-amazon.com/images/I/51zYSClGBtL._SX321_BO1,204,203,200_.jpg",
+    price: 236,
+    category: "Magical Lust",
+    quantity: 6,
+    inventoryStatus: "INSTOCK",
+    rating: 5,
+  },
+  {
+    id: 16,
+    code: "5k43kkk38",
+    name: "Beyond Good And Evil",
+    description: "Friedrich Nietzsche",
+    image: "https://m.media-amazon.com/images/I/81uo1Gu27uS.jpg",
+    price: 139,
+    category: "Non-Fiction",
+    quantity: 0,
+    inventoryStatus: "OUTOFSTOCK",
+    rating: 5,
+  }
 
   //
 ];
-
 export default BookRecords;

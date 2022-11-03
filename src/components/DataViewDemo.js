@@ -214,7 +214,7 @@ const DataViewDemo = () => {
           header={header}
           itemTemplate={itemTemplate}
           paginator
-          rows={9}
+          rows={8}
           sortOrder={sortOrder}
           sortField={sortField}
         />

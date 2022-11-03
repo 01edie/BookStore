@@ -12,18 +12,30 @@ const bookCart = createSlice({
   initialState,
   reducers: {
     addItem: (state, { payload }) => {
-      const newObj = {
-        id: payload.id,
-        title: payload.name,
-        price: payload.price,
-        img: payload.image,
-        quantity: 1,
-      };
-      console.log("newOBj", newObj);
-      const arr = [];
-      arr.push(newObj);
-      console.log("new array: ", arr);
-      state.cartItems.push(newObj);
+      
+      let alreadyExist = false;
+      const newCartItems=state.cartItems.map((item)=>{
+        if(item.id===payload.id){
+          alreadyExist=true;
+          return {...item,quantity:(item.quantity+1)}
+        }else{
+          return item;
+        }
+      })
+      
+      if(alreadyExist){
+        state.cartItems=newCartItems;
+      }else{
+        const newObj = {
+          id: payload.id,
+          title: payload.name,
+          price: payload.price,
+          img: payload.image,
+          quantity: 1,
+        };
+        state.cartItems.push(newObj);
+
+      }
       console.log("cart-items: ", state.cartItems);
     },
     removeItem: (state, action) => {
