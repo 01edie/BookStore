@@ -80,7 +80,7 @@ const BookRecords = [
   {
     id: 7,
     code: "5k43kkk29",
-    name: "i hope this finds you",
+    name: "I hope this finds you",
     description: "samica mehta",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/41ygJ1g-SnL._SX311_BO1,204,203,200_.jpg",

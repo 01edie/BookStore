@@ -2,44 +2,79 @@ import "primeicons/primeicons.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
-// import "../../index.css";
-import data from './../booksStock'
+import data from "./../booksStock";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import { DataView, DataViewLayoutOptions } from "primereact/dataview";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { Rating } from "primereact/rating";
 import "../DataViewDemo.css";
+import { Toast } from "primereact/toast";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setProducts,
+  setLayout,
+  setSortKey,
+  setSortOrder,
+  setSortField,
+} from "../features/bookstore/cartPageSlice";
+import { addItem } from "../features/bookstore/bookCartSlice";
+import { InputText } from "primereact/inputtext";
 
 const DataViewDemo = () => {
-  const [products, setProducts] = useState(null);
-  const [layout, setLayout] = useState("grid");
-  const [sortKey, setSortKey] = useState(null);
-  const [sortOrder, setSortOrder] = useState(null);
-  const [sortField, setSortField] = useState(null);
   const sortOptions = [
     { label: "Price High to Low", value: "!price" },
-    { label: "Price Low to High", value: "price" }
+    { label: "Price Low to High", value: "price" },
   ];
+  const toast = useRef(null);
 
+  const { products, layout, sortKey, sortOrder, sortField } = useSelector(
+    (store) => store.cartPage
+  );
+  const dispatch = useDispatch();
+  const [searchKey, setSearchKey] = useState("");
+  useEffect(() => {
+    dispatch(setProducts(data));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    setProducts(data);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    const searchHandler = (e) => {
+      
+      const searchedProducts = data.filter((item) => {
+   
+        return item.name.toLowerCase().includes(searchKey.toLowerCase());
+      });
+      dispatch(setProducts(searchedProducts));
+    };
+    searchHandler();
+
+  },[searchKey,dispatch]);
 
   const onSortChange = (event) => {
     const value = event.value;
 
     if (value.indexOf("!") === 0) {
-      setSortOrder(-1);
-      setSortField(value.substring(1, value.length));
-      setSortKey(value);
+      dispatch(setSortOrder(-1));
+      dispatch(setSortField(value.substring(1, value.length)));
+      dispatch(setSortKey(value));
     } else {
-      setSortOrder(1);
-      setSortField(value);
-      setSortKey(value);
+      dispatch(setSortOrder(1));
+      dispatch(setSortField(value));
+      dispatch(setSortKey(value));
     }
+  };
+
+  const addCartHandler = (data) => {
+    toast.current.show({
+      severity: "success",
+      summary: "Success Message",
+      detail: "Added to Cart",
+      life: 1000,
+    });
+    dispatch(addItem(data));
+    console.log(data);
   };
 
   const renderListItem = (data) => {
@@ -62,11 +97,12 @@ const DataViewDemo = () => {
             <span className="product-category">{data.category}</span>
           </div>
           <div className="product-list-action">
-            <span className="product-price">${data.price}</span>
+            <span className="product-price">₹ {data.price}</span>
             <Button
               icon="pi pi-shopping-cart"
               label="Add to Cart"
               disabled={data.inventoryStatus === "OUTOFSTOCK"}
+              onClick={() => addCartHandler(data)}
             ></Button>
             <span
               className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}
@@ -75,13 +111,14 @@ const DataViewDemo = () => {
             </span>
           </div>
         </div>
+        <Toast ref={toast} />
       </div>
     );
   };
 
   const renderGridItem = (data) => {
     return (
-      <div className="col-12 md:col-6 lg:col-4 xl:col-3">
+      <div className="col-12 md:col-6 lg:col-4 xl:col-3 ">
         <div className="product-grid-item card">
           <div className="product-grid-item-top">
             <div>
@@ -108,15 +145,17 @@ const DataViewDemo = () => {
             <Rating value={data.rating} readOnly cancel={false}></Rating>
           </div>
           <div className="product-grid-item-bottom">
-            <span className="product-price">${data.price}</span>
+            <span className="product-price">₹ {data.price}</span>
             <Button
-                className=""
+              className=""
+              onClick={() => addCartHandler(data)}
               icon="pi pi-shopping-cart"
               label="Add to Cart"
               disabled={data.inventoryStatus === "OUTOFSTOCK"}
             ></Button>
           </div>
         </div>
+        <Toast ref={toast} />
       </div>
     );
   };
@@ -132,8 +171,8 @@ const DataViewDemo = () => {
 
   const renderHeader = () => {
     return (
-      <div className="grid grid-nogutter">
-        <div className="col-6" style={{ textAlign: "left" }}>
+      <div className="flex flex-column gap-2 md:flex-row justify-content-between">
+        <div className="" style={{ textAlign: "left" }}>
           <Dropdown
             options={sortOptions}
             value={sortKey}
@@ -142,11 +181,23 @@ const DataViewDemo = () => {
             onChange={onSortChange}
           />
         </div>
-        <div className="col-6" style={{ textAlign: "right" }}>
-          <DataViewLayoutOptions
-            layout={layout}
-            onChange={(e) => setLayout(e.value)}
-          />
+        <div className="search-n-layout-container flex gap-2 align-items-center justify-content-between ">
+          <span className="p-input-icon-right">
+            <i className="pi pi-search" />
+            <InputText
+              className="p-inputtext-sm mb2 md:text-base"
+              placeholder="Search"
+              onChange={(e) => {
+                setSearchKey(e.target.value);
+              }}
+            />
+          </span>
+          <div style={{ textAlign: "right" }}>
+            <DataViewLayoutOptions
+              layout={layout}
+              onChange={(e) => dispatch(setLayout(e.value))}
+            />
+          </div>
         </div>
       </div>
     );
@@ -172,4 +223,4 @@ const DataViewDemo = () => {
   );
 };
 
-export default DataViewDemo
+export default DataViewDemo;
